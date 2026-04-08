@@ -271,7 +271,7 @@ body {
   
   <div class="date-entry" id="rwaEntry">
     <div class="date-header">
-      <div class="date-badge">4月8日<span>UTC+8</span></div>
+      <div class="date-badge">{{today_cn}}<span>UTC+8</span></div>
       <button class="copy-btn" onclick="copyBlock('rwaCopy')">📋 复制数据</button>
     </div>
     
@@ -282,15 +282,7 @@ body {
       
       <div class="copy-block-wrapper">
         <div class="copy-block-label">一键复制模板</div>
-        <div class="copy-block" id="rwaCopy">CoinFound 数据：RWA 市值为 949.24 亿美元
-ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
-● 私人信贷市值：396.48 亿美元
-● 公司债券市值：272.24 亿美元
-● 美国国债市值：136.10 亿美元
-● 大宗商品市值：72.38 亿美元
-● 机构基金市值：35.06 亿美元
-● 政府债券市值：18.63 亿美元
-● 代币化股票市值：18.36 亿美元</div>
+        <div class="copy-block" id="rwaCopy">{{rwa_copy_text}}</div>
       </div>
     </div>
     
@@ -300,7 +292,7 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
     </div>
     
     <div class="summary-section">
-      <div class="summary-box" id="rwaSummary">RWA 市值（不含稳定币）949.24 亿美元，7天涨跌 +9.96%。私人信贷领涨 +21.81%，代币化股票涨幅最小 +0.80%。机构资金持续流入代币化资产领域。</div>
+      <div class="summary-box" id="rwaSummary">{{rwa_summary}}</div>
     </div>
   </div>
 </div>
@@ -314,7 +306,7 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
   
   <div class="date-entry" id="stableEntry">
     <div class="date-header">
-      <div class="date-badge">4月8日<span>UTC+8</span></div>
+      <div class="date-badge">{{today_cn}}<span>UTC+8</span></div>
       <button class="copy-btn" onclick="copyBlock('scCopy')">📋 复制数据</button>
     </div>
     
@@ -325,15 +317,7 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
       
       <div class="copy-block-wrapper">
         <div class="copy-block-label">一键复制模板</div>
-        <div class="copy-block" id="scCopy">CoinFound 数据：稳定币总市值为 3227.49 亿美元
-ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
-● USDT市值：1963.60 亿美元
-● USDC市值：774.70 亿美元
-● USDS市值：28.10 亿美元
-● EURC市值：122.90 亿美元
-● USDe市值：28.10 亿美元
-● USD1市值：13.90 亿美元
-● PYUSD市值：39.90 亿美元</div>
+        <div class="copy-block" id="scCopy">{{sc_copy_text}}</div>
       </div>
     </div>
     
@@ -343,14 +327,14 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
     </div>
     
     <div class="summary-section">
-      <div class="summary-box" id="scSummary">稳定币总市值 3227.49 亿美元，7天涨跌 +0.14%。USDT 以 1963.60 亿美元继续保持龙头地位，USDC 以 774.70 亿美元位居第二。监管框架逐步清晰，利好稳定币长期发展。</div>
+      <div class="summary-box" id="scSummary">{{sc_summary}}</div>
     </div>
   </div>
 </div>
 
 <div class="footer">
   数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> · 
-  生成时间：2026-04-08 23:32 · 
+  生成时间：{{gen_time}} · 
   Jarvis 🤖
 </div>
 
@@ -358,12 +342,12 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
 
 <script>
 // RWA 数据
-var RWA_DATA = [{"name": "RWA 总市值（含稳定币）", "value": "4176.74", "chg": 0.0221}, {"name": "RWA 市值（不含稳定币）", "value": "949.24", "chg": 0.0996}, {"name": "私人信贷", "value": "396.48", "chg": 0.2181}, {"name": "公司债券", "value": "272.24", "chg": 0.0046}, {"name": "美国国债", "value": "136.10", "chg": 0.0481}, {"name": "大宗商品", "value": "72.38", "chg": 0.0218}, {"name": "机构基金", "value": "35.06", "chg": 0.1986}, {"name": "政府债券", "value": "18.63", "chg": 0.0005}, {"name": "代币化股票", "value": "18.36", "chg": 0.008}];
-var RWA_NEWS = [{"tag": "高", "tagClass": "tag-high", "title": "贝莱德 BUIDL 基金规模突破 20 亿美元，机构持续加码代币化国债", "url": ""}, {"tag": "中", "tagClass": "tag-mid", "title": "Ondo Finance 宣布与 Mastercard 合作，探索 RWA 支付场景", "url": ""}, {"tag": "低", "tagClass": "tag-low", "title": "Centrifuge 完成新一轮融资，估值达 5 亿美元", "url": ""}];
+var RWA_DATA = {{rwa_data_js}};
+var RWA_NEWS = {{rwa_news_js}};
 
 // 稳定币数据
-var SC_DATA = [{"name": "稳定币总市值", "value": "3227.49", "chg": 0.0014}, {"name": "USDT", "value": "1963.60"}, {"name": "USDC", "value": "774.70"}, {"name": "USDS", "value": "28.10"}, {"name": "EURC", "value": "122.90"}, {"name": "USDe", "value": "28.10"}, {"name": "USD1", "value": "13.90"}, {"name": "PYUSD", "value": "39.90"}];
-var SC_NEWS = [{"tag": "高", "tagClass": "tag-high", "title": "FDIC 发布稳定币与代币化存款监管框架草案", "url": ""}, {"tag": "中", "tagClass": "tag-mid", "title": "Circle USDC 市值突破 770 亿美元，创历史新高", "url": ""}, {"tag": "低", "tagClass": "tag-low", "title": "PayPal PYUSD 在 Solana 上的 TVL 持续增长", "url": ""}];
+var SC_DATA = {{sc_data_js}};
+var SC_NEWS = {{sc_news_js}};
 
 function renderDataGrid(containerId, data) {
   var grid = document.getElementById(containerId);
