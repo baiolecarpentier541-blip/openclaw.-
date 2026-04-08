@@ -412,12 +412,12 @@ body {
 
 <!-- 快速定位导航 -->
 <nav class="quick-nav">
-  <button class="quick-nav-btn" onclick="scrollTo('rwa-section')">
+  <button class="quick-nav-btn" onclick="jumpToSection('rwa-section')">
     <span class="nav-icon">📊</span>
     <span>RWA 品类</span>
   </button>
   <div class="nav-divider"></div>
-  <button class="quick-nav-btn" onclick="scrollTo('stablecoin-section')">
+  <button class="quick-nav-btn" onclick="jumpToSection('stablecoin-section')">
     <span class="nav-icon">💵</span>
     <span>稳定币</span>
   </button>
@@ -606,7 +606,7 @@ function copyNews(text) {
   });
 }
 
-function scrollTo(id) {
+function jumpToSection(id) {
   var el = document.getElementById(id);
   if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
