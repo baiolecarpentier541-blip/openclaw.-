@@ -456,11 +456,6 @@ body {
 <div class="date-nav-row">
   <div class="date-badge">📅 {{today_cn}}（UTC+8）</div>
   <nav class="quick-nav">
-    <button class="quick-nav-btn" onclick="jumpToSection('btc-section')">
-      <span class="nav-icon">₿</span>
-      <span>BTC</span>
-    </button>
-    <div class="nav-divider"></div>
     <button class="quick-nav-btn" onclick="jumpToSection('rwa-section')">
       <span class="nav-icon">📊</span>
       <span>RWA</span>
@@ -470,28 +465,14 @@ body {
       <span class="nav-icon">💵</span>
       <span>稳定币</span>
     </button>
+    <div class="nav-divider"></div>
+    <button class="quick-nav-btn" onclick="jumpToSection('btc-section')">
+      <span class="nav-icon">₿</span>
+      <span>BTC</span>
+    </button>
   </nav>
 </div>
 
-<!-- ==================== BTC 板块 ==================== -->
-<section class="section" id="btc-section">
-  <div class="section-header">
-    <h2 class="section-title">
-      <span class="icon btc">₿</span>
-      BTC 持币数据
-    </h2>
-    <span class="section-badge">{{today_cn}} 更新</span>
-  </div>
-
-  <!-- 复制模板 -->
-  <div class="copy-container">
-    <div class="copy-header">
-      <span class="copy-label">复制模板</span>
-      <button class="btn-copy" onclick="copyText('btcCopy')">📋 一键复制</button>
-    </div>
-    <div class="copy-content" id="btcCopy">{{btc_copy_text}}</div>
-  </div>
-</section>
 
 <!-- ==================== RWA 品类板块 ==================== -->
 <section class="section" id="rwa-section">
@@ -625,6 +606,25 @@ body {
       <button class="btn-copy" onclick="copyText('scSummary')">📋 复制全文</button>
     </div>
     <div class="summary-content structured-summary" id="scSummary">{{sc_summary}}</div>
+  </div>
+</section>
+<!-- ==================== BTC 板块 ==================== -->
+<section class="section" id="btc-section">
+  <div class="section-header">
+    <h2 class="section-title">
+      <span class="icon btc">₿</span>
+      BTC 持币数据
+    </h2>
+    <span class="section-badge">{{today_cn}} 更新</span>
+  </div>
+
+  <!-- 复制模板 -->
+  <div class="copy-container">
+    <div class="copy-header">
+      <span class="copy-label">复制模板</span>
+      <button class="btn-copy" onclick="copyText('btcCopy')">📋 一键复制</button>
+    </div>
+    <div class="copy-content" id="btcCopy">{{btc_copy_text}}</div>
   </div>
 </section>
 

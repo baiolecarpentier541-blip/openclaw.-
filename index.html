@@ -456,11 +456,6 @@ body {
 <div class="date-nav-row">
   <div class="date-badge">📅 4月9日（UTC+8）</div>
   <nav class="quick-nav">
-    <button class="quick-nav-btn" onclick="jumpToSection('btc-section')">
-      <span class="nav-icon">₿</span>
-      <span>BTC</span>
-    </button>
-    <div class="nav-divider"></div>
     <button class="quick-nav-btn" onclick="jumpToSection('rwa-section')">
       <span class="nav-icon">📊</span>
       <span>RWA</span>
@@ -470,28 +465,14 @@ body {
       <span class="nav-icon">💵</span>
       <span>稳定币</span>
     </button>
+    <div class="nav-divider"></div>
+    <button class="quick-nav-btn" onclick="jumpToSection('btc-section')">
+      <span class="nav-icon">₿</span>
+      <span>BTC</span>
+    </button>
   </nav>
 </div>
 
-<!-- ==================== BTC 板块 ==================== -->
-<section class="section" id="btc-section">
-  <div class="section-header">
-    <h2 class="section-title">
-      <span class="icon btc">₿</span>
-      BTC 持币数据
-    </h2>
-    <span class="section-badge">4月9日 更新</span>
-  </div>
-
-  <!-- 复制模板 -->
-  <div class="copy-container">
-    <div class="copy-header">
-      <span class="copy-label">复制模板</span>
-      <button class="btn-copy" onclick="copyText('btcCopy')">📋 一键复制</button>
-    </div>
-    <div class="copy-content" id="btcCopy">据 CoinFound 数据显示，目前205家上市公司合计持有1234852枚BTC，占比特币总量的 6.17%</div>
-  </div>
-</section>
 
 <!-- ==================== RWA 品类板块 ==================== -->
 <section class="section" id="rwa-section">
@@ -644,11 +625,30 @@ ME News 消息，4月9日 (UTC+8)，据 CoinFound 数据显示：
     <div class="summary-content structured-summary" id="scSummary">稳定币今日总市值 3227.49 亿美元，24小时内+0.65 亿美元，USDT 以1963亿美元占据60.8%市场份额，USDC 紧随其后（24.0%）。监管框架全面落地为 3230 亿美元稳定币市场打开规模化大门，与传统银行发币竞争潜力形成核心张力。受 FDIC 审慎监管框架批准、GENIUS 法案正式实施、瑞士六大国银行启动瑞郎稳定币沙盒影响，稳定币整体维持+0.14%的7日增势，竞争格局趋于多元。77%企业用户以供应商支付为主要场景（成本节省10%以上），54% Fortune 500正在评估入场，机构采纳正从试点走向规模化。整体来看，稳定币正从加密资产向数字支付基础设施演进，赛道+0.14%的增速显示出稳健扩张态势，未受到短期价格波动干扰。</div>
   </div>
 </section>
+<!-- ==================== BTC 板块 ==================== -->
+<section class="section" id="btc-section">
+  <div class="section-header">
+    <h2 class="section-title">
+      <span class="icon btc">₿</span>
+      BTC 持币数据
+    </h2>
+    <span class="section-badge">4月9日 更新</span>
+  </div>
+
+  <!-- 复制模板 -->
+  <div class="copy-container">
+    <div class="copy-header">
+      <span class="copy-label">复制模板</span>
+      <button class="btn-copy" onclick="copyText('btcCopy')">📋 一键复制</button>
+    </div>
+    <div class="copy-content" id="btcCopy">据 CoinFound 数据显示，目前205家上市公司合计持有1234852枚BTC，占比特币总量的 6.17%</div>
+  </div>
+</section>
 
 <footer class="page-footer">
   <p class="meta">
     数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> · 
-    生成时间：2026-04-09 01:27 · 
+    生成时间：2026-04-09 01:30 · 
     Powered by Jarvis 🤖
   </p>
 </footer>
