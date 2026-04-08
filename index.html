@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RWA 每日简报</title>
+<title>每日数据简报</title>
 <style>
 :root {
   --bg-primary: #0a0b0f;
@@ -48,30 +48,17 @@ body {
   color: var(--text-muted);
 }
 
-/* Date Navigation */
-.date-nav {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
-.date-tab {
-  background: var(--bg-card);
+/* Date Badge */
+.date-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.date-tab:hover { border-color: var(--accent-blue); color: var(--text-primary); }
-.date-tab.active {
-  background: var(--accent-blue);
-  border-color: var(--accent-blue);
-  color: #fff;
-  font-weight: 600;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+  font-weight: 500;
 }
 
 /* Section */
@@ -99,19 +86,19 @@ body {
   gap: 10px;
 }
 .section-title .icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 18px;
 }
-.section-title .icon.rwa { background: linear-gradient(135deg, #4a9eff20, #a78bfa20); }
-.section-title .icon.stable { background: linear-gradient(135deg, #34d39920, #4a9eff20); }
+.section-title .icon.rwa { background: linear-gradient(135deg, #4a9eff30, #a78bfa30); }
+.section-title .icon.stable { background: linear-gradient(135deg, #34d39930, #4a9eff30); }
 .section-badge {
   font-size: 11px;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
   background: var(--bg-elevated);
   color: var(--text-muted);
@@ -148,9 +135,21 @@ body {
   padding: 6px 14px;
   cursor: pointer;
   font-weight: 500;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
 }
-.btn-copy:hover { opacity: 0.85; }
+.btn-copy:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-copy:active { transform: translateY(0); }
+.btn-copy-sm {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-copy-sm:hover { background: var(--border); color: var(--text-primary); }
 .copy-content {
   padding: 20px;
   font-family: "SF Mono", "Menlo", "PingFang SC", monospace;
@@ -159,6 +158,20 @@ body {
   color: var(--text-primary);
   white-space: pre-wrap;
   user-select: all;
+}
+
+/* Stat Value with Copy */
+.stat-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.stat-value-row .value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
 }
 
 /* Stats Grid */
@@ -181,15 +194,9 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-.stat-card .value {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text-primary);
-  font-variant-numeric: tabular-nums;
-}
 .stat-card .change {
   font-size: 12px;
-  margin-top: 4px;
+  margin-top: 6px;
   font-weight: 500;
 }
 .stat-card .change.up { color: var(--accent-green); }
@@ -227,15 +234,24 @@ body {
 }
 .data-table td:nth-child(3) { text-align: right; font-size: 13px; }
 .data-table tr:last-child td { border-bottom: none; }
-.data-table tr:hover td { background: var(--bg-elevated); }
+.data-table tr:hover td { background: rgba(74, 158, 255, 0.05); }
 
 /* News */
+.subsection-title {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 28px 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
 .news-list { list-style: none; }
 .news-item {
   display: flex;
   gap: 14px;
   padding: 16px 0;
   border-bottom: 1px solid var(--border);
+  align-items: flex-start;
 }
 .news-item:last-child { border-bottom: none; }
 .news-tag {
@@ -249,28 +265,47 @@ body {
 .news-tag.high { background: #f8717120; color: var(--accent-red); }
 .news-tag.mid { background: #fb923c20; color: var(--accent-orange); }
 .news-tag.low { background: #4a9eff20; color: var(--accent-blue); }
+.news-content { flex: 1; }
+.news-content .title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
 .news-content .title {
   font-size: 14px;
   color: var(--text-primary);
   line-height: 1.5;
-  margin-bottom: 6px;
+  flex: 1;
 }
 .news-content .meta {
   font-size: 12px;
   color: var(--text-muted);
+  margin-top: 6px;
 }
 .news-content a { color: var(--accent-blue); text-decoration: none; }
 .news-content a:hover { text-decoration: underline; }
 
 /* Summary */
-.summary-box {
+.summary-container {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
   background: var(--bg-elevated);
-  border-left: 3px solid var(--accent-blue);
-  border-radius: 8px;
-  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.summary-content {
+  padding: 20px;
   font-size: 14px;
   color: var(--text-secondary);
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 /* Footer */
@@ -286,12 +321,33 @@ body {
 }
 .page-footer a { color: var(--text-secondary); }
 
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--accent-blue);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
 @media (max-width: 640px) {
   .container { padding: 20px 16px; }
   .section { padding: 20px; }
   .stats-grid { grid-template-columns: 1fr; }
-  .date-nav { gap: 8px; }
-  .date-tab { padding: 8px 14px; font-size: 13px; }
+  .stat-value-row .value { font-size: 20px; }
+  .news-content .title-row { flex-direction: column; gap: 8px; }
 }
 </style>
 </head>
@@ -299,14 +355,11 @@ body {
 <div class="container">
 
 <header class="page-header">
-  <h1>RWA 每日简报</h1>
+  <h1>每日数据简报</h1>
   <p class="subtitle">代币化资产市场数据 · 由 Jarvis 自动生成</p>
 </header>
 
-<!-- Date Navigation -->
-<nav class="date-nav">
-  <button class="date-tab active" data-date="4月8日">4月8日</button>
-</nav>
+<div class="date-badge">📅 4月8日（UTC+8）</div>
 
 <!-- ==================== RWA 品类板块 ==================== -->
 <section class="section" id="rwa-section">
@@ -322,7 +375,7 @@ body {
   <div class="copy-container">
     <div class="copy-header">
       <span class="copy-label">复制模板</span>
-      <button class="btn-copy" onclick="copyText('rwaCopy')">📋 复制</button>
+      <button class="btn-copy" onclick="copyText('rwaCopy')">📋 一键复制</button>
     </div>
     <div class="copy-content" id="rwaCopy">CoinFound 数据：RWA 市值为 949.24 亿美元
 ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
@@ -339,17 +392,26 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
   <div class="stats-grid">
     <div class="stat-card">
       <div class="label">RWA 总市值</div>
-      <div class="value">4176.74</div>
+      <div class="stat-value-row">
+        <span class="value">4176.74</span>
+        <button class="btn-copy-sm" onclick="copyValue('4176.74 亿美元')">复制</button>
+      </div>
       <div class="change up">+2.21%</div>
     </div>
     <div class="stat-card">
       <div class="label">非稳定币市值</div>
-      <div class="value">949.24</div>
+      <div class="stat-value-row">
+        <span class="value">949.24</span>
+        <button class="btn-copy-sm" onclick="copyValue('949.24 亿美元')">复制</button>
+      </div>
       <div class="change up">+9.96%</div>
     </div>
     <div class="stat-card">
       <div class="label">持有人数</div>
-      <div class="value">2.83亿</div>
+      <div class="stat-value-row">
+        <span class="value">2.83亿</span>
+        <button class="btn-copy-sm" onclick="copyValue('2.83 亿')">复制</button>
+      </div>
       <div class="change up">+0.35%</div>
     </div>
   </div>
@@ -361,12 +423,18 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
   </table>
 
   <!-- RWA 新闻 -->
-  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场动态</h3>
+  <h3 class="subsection-title">市场动态（24h）</h3>
   <ul class="news-list" id="rwaNewsList"></ul>
 
   <!-- RWA 总结 -->
-  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场总结</h3>
-  <div class="summary-box" id="rwaSummary">RWA（非稳定币）总市值 949.24 亿美元，7 日+9.96%。私人信贷以 396.48 亿美元领跑，7日涨幅 +21.81%。代币化股票市值 18.36 亿美元，表现相对平稳。</div>
+  <h3 class="subsection-title">市场总结</h3>
+  <div class="summary-container">
+    <div class="summary-header">
+      <span class="copy-label">RWA 市场总结</span>
+      <button class="btn-copy" onclick="copyText('rwaSummary')">📋 复制</button>
+    </div>
+    <div class="summary-content" id="rwaSummary">RWA（非稳定币）总市值 949.24 亿美元，7 日变化 +9.96%。私人信贷以 396.48 亿美元领跑，7 日涨幅 +21.81%；代币化股票市值 18.36 亿美元，表现相对平稳。监管层面，FDIC 正式批准代币化存款框架，明确储备资产需 1:1 全额支持并按月披露，为机构入场铺平道路。受美伊停火协议影响，美债收益率大幅下行，代币化国债产品吸引力有所回升。</div>
+  </div>
 </section>
 
 <!-- ==================== 稳定币板块 ==================== -->
@@ -383,12 +451,13 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
   <div class="copy-container">
     <div class="copy-header">
       <span class="copy-label">复制模板</span>
-      <button class="btn-copy" onclick="copyText('scCopy')">📋 复制</button>
+      <button class="btn-copy" onclick="copyText('scCopy')">📋 一键复制</button>
     </div>
     <div class="copy-content" id="scCopy">CoinFound 数据：稳定币总市值为 3227.49 亿美元
 ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
 ● USDT市值：1963.60 亿美元
 ● USDC市值：774.70 亿美元
+● DAI市值：52.30 亿美元
 ● USDS市值：28.10 亿美元
 ● EURC市值：122.90 亿美元
 ● USDe市值：28.10 亿美元
@@ -400,17 +469,25 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
   <div class="stats-grid">
     <div class="stat-card">
       <div class="label">稳定币总市值</div>
-      <div class="value">3227.49</div>
+      <div class="stat-value-row">
+        <span class="value">3227.49</span>
+        <button class="btn-copy-sm" onclick="copyValue('3227.49 亿美元')">复制</button>
+      </div>
       <div class="change up">+0.14%</div>
     </div>
     <div class="stat-card">
       <div class="label">USDT 占比</div>
-      <div class="value">60.8%</div>
+      <div class="stat-value-row">
+        <span class="value">60.8%</span>
+        <button class="btn-copy-sm" onclick="copyValue('60.8%')">复制</button>
+      </div>
       <div class="change" style="color:var(--text-muted)">主导地位</div>
     </div>
     <div class="stat-card">
       <div class="label">币种数量</div>
-      <div class="value">7</div>
+      <div class="stat-value-row">
+        <span class="value">8</span>
+      </div>
       <div class="change" style="color:var(--text-muted)">主要稳定币</div>
     </div>
   </div>
@@ -422,37 +499,73 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
   </table>
 
   <!-- 稳定币新闻 -->
-  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场动态</h3>
+  <h3 class="subsection-title">市场动态（24h）</h3>
   <ul class="news-list" id="scNewsList"></ul>
 
   <!-- 稳定币总结 -->
-  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场总结</h3>
-  <div class="summary-box" id="scSummary">稳定币总市值 3227.49 亿美元，7 日+0.14%。USDT 以 1964 亿美元占据主导地位（60.8%），USDC 紧随其后（24.0%）。</div>
+  <h3 class="subsection-title">市场总结</h3>
+  <div class="summary-container">
+    <div class="summary-header">
+      <span class="copy-label">稳定币市场总结</span>
+      <button class="btn-copy" onclick="copyText('scSummary')">📋 复制</button>
+    </div>
+    <div class="summary-content" id="scSummary">稳定币总市值 3227.49 亿美元，7 日变化 +0.14%。USDT 以 1964 亿美元占据 60.8% 市场份额，USDC 以 775 亿美元位居第二（24.0%）。监管动态方面，FDIC 批准稳定币审慎框架，要求发行方维持 1:1 储备并接受独立审计；美银 CEO 警告若监管允许收益支付，最高 6 万亿美元银行存款可能流向稳定币。瑞士六大银行联合 UBS 启动瑞郎稳定币沙盒测试，传统金融机构加速布局数字支付基础设施。</div>
+  </div>
 </section>
 
 <footer class="page-footer">
   <p class="meta">
     数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> · 
-    生成时间：2026-04-08 23:36 · 
+    生成时间：2026-04-08 23:57 · 
     Powered by Jarvis 🤖
   </p>
 </footer>
 
 </div>
 
+<!-- Toast -->
+<div class="toast" id="toast">已复制到剪贴板</div>
+
 <script>
 var RWA_ASSETS = [{"name": "私人信贷", "cap": "396.48", "chg": 0.2181}, {"name": "公司债券", "cap": "272.24", "chg": 0.0046}, {"name": "美国国债", "cap": "136.10", "chg": 0.0481}, {"name": "大宗商品", "cap": "72.38", "chg": 0.0218}, {"name": "机构基金", "cap": "35.06", "chg": 0.1986}, {"name": "政府债券", "cap": "18.63", "chg": 0.0005}, {"name": "代币化股票", "cap": "18.36", "chg": 0.008}];
-var STABLECOINS = [{"name": "USDT", "cap": "1963.60"}, {"name": "USDC", "cap": "774.70"}, {"name": "USDS", "cap": "28.10"}, {"name": "EURC", "cap": "122.90"}, {"name": "USDe", "cap": "28.10"}, {"name": "USD1", "cap": "13.90"}, {"name": "PYUSD", "cap": "39.90"}];
-var RWA_NEWS = [{"tag": "高", "level": "high", "title": "贝莱德 BUIDL 基金市值突破 20 亿美元，机构 RWA 需求强劲", "source": "CoinDesk", "url": "#"}, {"tag": "中", "level": "mid", "title": "Ondo Finance 与 Coinbase 合作推出代币化美债产品", "source": "The Block", "url": "#"}, {"tag": "低", "level": "low", "title": "MakerDAO 增持美债 RWA 至 12 亿美元", "source": "DeFi Llama", "url": "#"}];
-var SC_NEWS = [{"tag": "高", "level": "high", "title": "FDIC 批准稳定币与代币化存款重大监管框架", "source": "Forbes", "url": "#"}, {"tag": "中", "level": "mid", "title": "Circle 计划 2026 年 IPO，USDC 市值创历史新高", "source": "Bloomberg", "url": "#"}, {"tag": "低", "level": "low", "title": "PYUSD 在 Solana 上流通量突破 10 亿美元", "source": "CoinTelegraph", "url": "#"}];
+var STABLECOINS = [{"name": "USDT", "cap": "1963.60"}, {"name": "USDC", "cap": "774.70"}, {"name": "DAI", "cap": "52.30"}, {"name": "USDS", "cap": "28.10"}, {"name": "EURC", "cap": "122.90"}, {"name": "USDe", "cap": "28.10"}, {"name": "USD1", "cap": "13.90"}, {"name": "PYUSD", "cap": "39.90"}];
+var RWA_NEWS = [{"tag": "高", "level": "high", "title": "FDIC 批准稳定币与代币化存款重大监管框架，明确储备资产 1:1 全额支持要求", "source": "Forbes", "url": "https://www.forbes.com/sites/jasonbrett/2026/04/07/fdic-advances-major-framework-for-stablecoins-and-tokenized-deposits/"}, {"tag": "高", "level": "high", "title": "美国国债收益率暴跌 10 基点，美伊停火协议提振市场风险偏好", "source": "CNBC", "url": "https://www.cnbc.com/2026/04/08/us-treasury-yields-plunge-amid-iran-ceasefire.html"}, {"tag": "高", "level": "high", "title": "华尔街银行瞄准 3230 亿美元稳定币市场，GENIUS 法案打响发令枪", "source": "Forbes", "url": "https://www.forbes.com/sites/boazsobrado/2026/04/08/gamechanger-banks-suddenly-targeting-323-billion-stablecoin-market/"}, {"tag": "中", "level": "mid", "title": "报告预测：2026 年稳定币年结算量将突破 50 万亿美元，Fortune 500 多数企业评估中", "source": "Fintech Times", "url": "https://thefintechtimes.com/morph-predicts-stablecoins-will-capture-10-of-global-cross-border-payments-by-2030/"}, {"tag": "中", "level": "mid", "title": "贝莱德 BUIDL 基金持续吸引机构资金，代币化美债需求强劲", "source": "CoinDesk", "url": "#"}];
+var SC_NEWS = [{"tag": "高", "level": "high", "title": "FDIC 正式批准稳定币审慎监管框架，储备资产需月度披露并接受独立审计", "source": "Forbes", "url": "https://www.forbes.com/sites/jasonbrett/2026/04/07/fdic-advances-major-framework-for-stablecoins-and-tokenized-deposits/"}, {"tag": "高", "level": "high", "title": "GENIUS 法案落地：华尔街银行竞相布局，美银 CEO 警告 6 万亿存款或流向稳定币", "source": "Forbes", "url": "https://www.forbes.com/sites/boazsobrado/2026/04/08/gamechanger-banks-suddenly-targeting-323-billion-stablecoin-market/"}, {"tag": "中", "level": "mid", "title": "瑞士六大银行联合 UBS 测试瑞士法郎稳定币沙盒，探索区块链应用场景", "source": "Reuters", "url": "https://www.reuters.com/business/finance/swiss-banks-test-use-cases-swiss-franc-stablecoin-2026-04-08/"}, {"tag": "中", "level": "mid", "title": "机构报告：77% 企业稳定币用户以供应商支付为主要场景，成本节省超 10%", "source": "Fintech Times", "url": "https://thefintechtimes.com/morph-predicts-stablecoins-will-capture-10-of-global-cross-border-payments-by-2030/"}, {"tag": "低", "level": "low", "title": "稳定币将在 2030 年前占据全球跨境支付 10% 份额", "source": "Fintech Times", "url": "https://thefintechtimes.com/morph-predicts-stablecoins-will-capture-10-of-global-cross-border-payments-by-2030/"}];
 var STABLE_TOTAL = 3227.49;
 
 function pct(v) { return (v>=0?'+':'') + (v*100).toFixed(2)+'%'; }
 
+function showToast(msg) {
+  var toast = document.getElementById('toast');
+  toast.textContent = msg || '已复制到剪贴板';
+  toast.classList.add('show');
+  setTimeout(function() { toast.classList.remove('show'); }, 2000);
+}
+
+function copyText(id) {
+  var text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    showToast('已复制到剪贴板');
+  });
+}
+
+function copyValue(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    showToast('已复制: ' + text);
+  });
+}
+
+function copyNews(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    showToast('新闻已复制');
+  });
+}
+
 // Render RWA table
 document.getElementById('rwaTableBody').innerHTML = RWA_ASSETS.map(function(a) {
   var chgClass = a.chg >= 0 ? 'up' : 'down';
-  return '<tr><td>'+a.name+'</td><td>'+a.cap+'</td><td class="change '+chgClass+'" style="color:var(--accent-'+(a.chg>=0?'green':'red')+')">'+pct(a.chg)+'</td></tr>';
+  var chgColor = a.chg >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+  return '<tr><td>'+a.name+'</td><td>'+a.cap+'</td><td style="color:'+chgColor+'">'+pct(a.chg)+'</td></tr>';
 }).join('');
 
 // Render Stablecoin table
@@ -461,25 +574,14 @@ document.getElementById('scTableBody').innerHTML = STABLECOINS.map(function(c) {
   return '<tr><td>'+c.name+'</td><td>'+c.cap+'</td><td style="color:var(--text-secondary)">'+share+'</td></tr>';
 }).join('');
 
-// Render news
+// Render news with copy button
 function renderNews(list, containerId) {
   document.getElementById(containerId).innerHTML = list.map(function(n) {
-    return '<li class="news-item"><span class="news-tag '+n.level+'">'+n.tag+'</span><div class="news-content"><div class="title">'+n.title+'</div><div class="meta">来源：'+n.source+' · <a href="'+n.url+'" target="_blank">查看原文 ↗</a></div></div></li>';
+    return '<li class="news-item"><span class="news-tag '+n.level+'">'+n.tag+'</span><div class="news-content"><div class="title-row"><span class="title">'+n.title+'</span><button class="btn-copy-sm" onclick="copyNews(\''+n.title.replace(/'/g, "\\'")+'\')">复制</button></div><div class="meta">来源：'+n.source+' · <a href="'+n.url+'" target="_blank">查看原文 ↗</a></div></div></li>';
   }).join('');
 }
 renderNews(RWA_NEWS, 'rwaNewsList');
 renderNews(SC_NEWS, 'scNewsList');
-
-// Copy function
-function copyText(id) {
-  var text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text).then(function() {
-    var btn = event.target;
-    var orig = btn.textContent;
-    btn.textContent = '✅ 已复制';
-    setTimeout(function() { btn.textContent = orig; }, 1500);
-  });
-}
 </script>
 </body>
 </html>
