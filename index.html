@@ -8,281 +8,323 @@
 :root {
   --bg-primary: #0a0b0f;
   --bg-card: #12141a;
-  --bg-hover: #1a1d25;
-  --border: #1e2128;
-  --text-primary: #f0f0f5;
-  --text-secondary: #8a8f9d;
-  --text-muted: #5a5f6d;
+  --bg-elevated: #1a1d24;
+  --border: #252830;
+  --text-primary: #f0f2f5;
+  --text-secondary: #8b919e;
+  --text-muted: #5a5f6a;
   --accent-blue: #4a9eff;
-  --accent-green: #22c55e;
-  --accent-red: #ef4444;
-  --accent-orange: #f59e0b;
+  --accent-green: #34d399;
+  --accent-red: #f87171;
+  --accent-orange: #fb923c;
+  --accent-purple: #a78bfa;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
 }
-.container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+.container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
 
 /* Header */
-.header {
+.page-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--border);
 }
-.header h1 {
+.page-header h1 {
   font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 8px;
+  letter-spacing: -0.5px;
 }
-.header .subtitle {
+.page-header .subtitle {
   font-size: 14px;
   color: var(--text-muted);
 }
 
+/* Date Navigation */
+.date-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.date-tab {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.date-tab:hover { border-color: var(--accent-blue); color: var(--text-primary); }
+.date-tab.active {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #fff;
+  font-weight: 600;
+}
+
 /* Section */
 .section {
-  margin-bottom: 56px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 24px;
 }
 .section-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
   margin-bottom: 24px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--border);
 }
-.section-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-.section-icon.rwa { background: linear-gradient(135deg, #1e3a5f, #0d1f33); }
-.section-icon.stable { background: linear-gradient(135deg, #1e5f3a, #0d331f); }
 .section-title {
   font-size: 18px;
   font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title .icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.section-title .icon.rwa { background: linear-gradient(135deg, #4a9eff20, #a78bfa20); }
+.section-title .icon.stable { background: linear-gradient(135deg, #34d39920, #4a9eff20); }
+.section-badge {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
 }
 
-/* Date Entry */
-.date-entry {
-  background: var(--bg-card);
+/* Copy Block */
+.copy-container {
+  background: var(--bg-primary);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  margin-bottom: 20px;
+  border-radius: 12px;
   overflow: hidden;
+  margin-bottom: 24px;
 }
-.date-header {
+.copy-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
-  background: var(--bg-hover);
+  padding: 12px 16px;
+  background: var(--bg-elevated);
   border-bottom: 1px solid var(--border);
 }
-.date-badge {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-.date-badge span {
-  color: var(--text-muted);
-  font-weight: 400;
-  font-size: 13px;
-  margin-left: 8px;
-}
-.copy-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 14px;
+.copy-label {
   font-size: 12px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: inherit;
-}
-.copy-btn:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-  border-color: var(--accent-blue);
-}
-
-/* Data Grid */
-.data-section {
-  padding: 20px;
-}
-.data-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.data-item {
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
-}
-.data-item .label {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-.data-item .value {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  font-variant-numeric: tabular-nums;
-}
-.data-item .change {
-  font-size: 12px;
-  margin-top: 2px;
-}
-.positive { color: var(--accent-green); }
-.negative { color: var(--accent-red); }
-
-/* Copy Block */
-.copy-block-wrapper {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-}
-.copy-block-label {
-  font-size: 11px;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
+  letter-spacing: 0.5px;
 }
-.copy-block {
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 18px;
-  font-size: 13px;
-  color: var(--text-secondary);
+.btn-copy {
+  background: var(--accent-blue);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.btn-copy:hover { opacity: 0.85; }
+.copy-content {
+  padding: 20px;
+  font-family: "SF Mono", "Menlo", "PingFang SC", monospace;
+  font-size: 14px;
   line-height: 2;
-  font-family: "SF Mono", "Monaco", "PingFang SC", monospace;
+  color: var(--text-primary);
   white-space: pre-wrap;
   user-select: all;
 }
 
-/* News */
-.news-section {
-  padding: 0 20px 20px;
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
 }
-.news-title {
-  font-size: 13px;
+.stat-card {
+  background: var(--bg-elevated);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.stat-card .label {
+  font-size: 12px;
   color: var(--text-muted);
-  margin-bottom: 12px;
-  padding-bottom: 8px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.stat-card .value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.stat-card .change {
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+.stat-card .change.up { color: var(--accent-green); }
+.stat-card .change.down { color: var(--accent-red); }
+
+/* Data Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+.data-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   border-bottom: 1px solid var(--border);
+  font-weight: 500;
 }
-.news-list {
-  list-style: none;
+.data-table th:nth-child(2),
+.data-table th:nth-child(3) { text-align: right; }
+.data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
 }
+.data-table td:nth-child(1) { color: var(--text-primary); font-weight: 500; }
+.data-table td:nth-child(2) {
+  text-align: right;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.data-table td:nth-child(3) { text-align: right; font-size: 13px; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--bg-elevated); }
+
+/* News */
+.news-list { list-style: none; }
 .news-item {
   display: flex;
-  gap: 10px;
-  padding: 10px 0;
+  gap: 14px;
+  padding: 16px 0;
   border-bottom: 1px solid var(--border);
 }
 .news-item:last-child { border-bottom: none; }
 .news-tag {
   flex-shrink: 0;
   font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 4px;
   font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  height: fit-content;
 }
-.tag-high { background: rgba(239,68,68,0.15); color: var(--accent-red); }
-.tag-mid { background: rgba(245,158,11,0.15); color: var(--accent-orange); }
-.tag-low { background: rgba(74,158,255,0.15); color: var(--accent-blue); }
-.news-content {
-  flex: 1;
-  font-size: 13px;
-  color: var(--text-secondary);
+.news-tag.high { background: #f8717120; color: var(--accent-red); }
+.news-tag.mid { background: #fb923c20; color: var(--accent-orange); }
+.news-tag.low { background: #4a9eff20; color: var(--accent-blue); }
+.news-content .title {
+  font-size: 14px;
+  color: var(--text-primary);
   line-height: 1.5;
+  margin-bottom: 6px;
 }
-.news-content a {
-  color: var(--accent-blue);
-  text-decoration: none;
+.news-content .meta {
+  font-size: 12px;
+  color: var(--text-muted);
 }
+.news-content a { color: var(--accent-blue); text-decoration: none; }
 .news-content a:hover { text-decoration: underline; }
 
 /* Summary */
-.summary-section {
-  padding: 0 20px 20px;
-}
 .summary-box {
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
+  background: var(--bg-elevated);
   border-left: 3px solid var(--accent-blue);
-  border-radius: 10px;
-  padding: 14px 18px;
-  font-size: 13px;
+  border-radius: 8px;
+  padding: 20px 24px;
+  font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.8;
 }
 
 /* Footer */
-.footer {
+.page-footer {
   text-align: center;
   padding-top: 32px;
   border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+.page-footer .meta {
   font-size: 12px;
   color: var(--text-muted);
 }
-.footer a { color: var(--text-secondary); text-decoration: none; }
-.footer a:hover { color: var(--accent-blue); }
+.page-footer a { color: var(--text-secondary); }
 
-@media (max-width: 600px) {
-  .container { padding: 24px 16px; }
-  .data-grid { grid-template-columns: repeat(2, 1fr); }
-  .date-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+@media (max-width: 640px) {
+  .container { padding: 20px 16px; }
+  .section { padding: 20px; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .date-nav { gap: 8px; }
+  .date-tab { padding: 8px 14px; font-size: 13px; }
 }
 </style>
 </head>
 <body>
 <div class="container">
 
-<div class="header">
+<header class="page-header">
   <h1>RWA 每日简报</h1>
-  <p class="subtitle">Real World Assets Daily Report · Powered by Jarvis</p>
-</div>
+  <p class="subtitle">代币化资产市场数据 · 由 Jarvis 自动生成</p>
+</header>
+
+<!-- Date Navigation -->
+<nav class="date-nav">
+  <button class="date-tab active" data-date="4月8日">4月8日</button>
+</nav>
 
 <!-- ==================== RWA 品类板块 ==================== -->
-<div class="section">
+<section class="section" id="rwa-section">
   <div class="section-header">
-    <div class="section-icon rwa">📊</div>
-    <h2 class="section-title">RWA 品类数据</h2>
+    <h2 class="section-title">
+      <span class="icon rwa">📊</span>
+      RWA 品类数据
+    </h2>
+    <span class="section-badge">4月8日 更新</span>
   </div>
-  
-  <div class="date-entry" id="rwaEntry">
-    <div class="date-header">
-      <div class="date-badge">4月8日<span>UTC+8</span></div>
-      <button class="copy-btn" onclick="copyBlock('rwaCopy')">📋 复制数据</button>
+
+  <!-- 复制模板 -->
+  <div class="copy-container">
+    <div class="copy-header">
+      <span class="copy-label">复制模板</span>
+      <button class="btn-copy" onclick="copyText('rwaCopy')">📋 复制</button>
     </div>
-    
-    <div class="data-section">
-      <div class="data-grid" id="rwaDataGrid">
-        <!-- 动态注入 -->
-      </div>
-      
-      <div class="copy-block-wrapper">
-        <div class="copy-block-label">一键复制模板</div>
-        <div class="copy-block" id="rwaCopy">CoinFound 数据：RWA 市值为 949.24 亿美元
+    <div class="copy-content" id="rwaCopy">CoinFound 数据：RWA 市值为 949.24 亿美元
 ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
 ● 私人信贷市值：396.48 亿美元
 ● 公司债券市值：272.24 亿美元
@@ -291,41 +333,59 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
 ● 机构基金市值：35.06 亿美元
 ● 政府债券市值：18.63 亿美元
 ● 代币化股票市值：18.36 亿美元</div>
-      </div>
+  </div>
+
+  <!-- 统计卡片 -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">RWA 总市值</div>
+      <div class="value">4176.74</div>
+      <div class="change up">+2.21%</div>
     </div>
-    
-    <div class="news-section">
-      <div class="news-title">📰 RWA 市场动态（24h）</div>
-      <ul class="news-list" id="rwaNewsList"></ul>
+    <div class="stat-card">
+      <div class="label">非稳定币市值</div>
+      <div class="value">949.24</div>
+      <div class="change up">+9.96%</div>
     </div>
-    
-    <div class="summary-section">
-      <div class="summary-box" id="rwaSummary">RWA 市值（不含稳定币）949.24 亿美元，7天涨跌 +9.96%。私人信贷领涨 +21.81%，代币化股票涨幅最小 +0.80%。机构资金持续流入代币化资产领域。</div>
+    <div class="stat-card">
+      <div class="label">持有人数</div>
+      <div class="value">2.83亿</div>
+      <div class="change up">+0.35%</div>
     </div>
   </div>
-</div>
+
+  <!-- 品类表格 -->
+  <table class="data-table">
+    <thead><tr><th>品类</th><th>市值（亿美元）</th><th>7日变化</th></tr></thead>
+    <tbody id="rwaTableBody"></tbody>
+  </table>
+
+  <!-- RWA 新闻 -->
+  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场动态</h3>
+  <ul class="news-list" id="rwaNewsList"></ul>
+
+  <!-- RWA 总结 -->
+  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场总结</h3>
+  <div class="summary-box" id="rwaSummary">RWA（非稳定币）总市值 949.24 亿美元，7 日+9.96%。私人信贷以 396.48 亿美元领跑，7日涨幅 +21.81%。代币化股票市值 18.36 亿美元，表现相对平稳。</div>
+</section>
 
 <!-- ==================== 稳定币板块 ==================== -->
-<div class="section">
+<section class="section" id="stablecoin-section">
   <div class="section-header">
-    <div class="section-icon stable">💵</div>
-    <h2 class="section-title">稳定币市值数据</h2>
+    <h2 class="section-title">
+      <span class="icon stable">💵</span>
+      稳定币数据
+    </h2>
+    <span class="section-badge">4月8日 更新</span>
   </div>
-  
-  <div class="date-entry" id="stableEntry">
-    <div class="date-header">
-      <div class="date-badge">4月8日<span>UTC+8</span></div>
-      <button class="copy-btn" onclick="copyBlock('scCopy')">📋 复制数据</button>
+
+  <!-- 复制模板 -->
+  <div class="copy-container">
+    <div class="copy-header">
+      <span class="copy-label">复制模板</span>
+      <button class="btn-copy" onclick="copyText('scCopy')">📋 复制</button>
     </div>
-    
-    <div class="data-section">
-      <div class="data-grid" id="scDataGrid">
-        <!-- 动态注入 -->
-      </div>
-      
-      <div class="copy-block-wrapper">
-        <div class="copy-block-label">一键复制模板</div>
-        <div class="copy-block" id="scCopy">CoinFound 数据：稳定币总市值为 3227.49 亿美元
+    <div class="copy-content" id="scCopy">CoinFound 数据：稳定币总市值为 3227.49 亿美元
 ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
 ● USDT市值：1963.60 亿美元
 ● USDC市值：774.70 亿美元
@@ -334,77 +394,90 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
 ● USDe市值：28.10 亿美元
 ● USD1市值：13.90 亿美元
 ● PYUSD市值：39.90 亿美元</div>
-      </div>
+  </div>
+
+  <!-- 统计卡片 -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">稳定币总市值</div>
+      <div class="value">3227.49</div>
+      <div class="change up">+0.14%</div>
     </div>
-    
-    <div class="news-section">
-      <div class="news-title">📰 稳定币市场动态（24h）</div>
-      <ul class="news-list" id="scNewsList"></ul>
+    <div class="stat-card">
+      <div class="label">USDT 占比</div>
+      <div class="value">60.8%</div>
+      <div class="change" style="color:var(--text-muted)">主导地位</div>
     </div>
-    
-    <div class="summary-section">
-      <div class="summary-box" id="scSummary">稳定币总市值 3227.49 亿美元，7天涨跌 +0.14%。USDT 以 1963.60 亿美元继续保持龙头地位，USDC 以 774.70 亿美元位居第二。监管框架逐步清晰，利好稳定币长期发展。</div>
+    <div class="stat-card">
+      <div class="label">币种数量</div>
+      <div class="value">7</div>
+      <div class="change" style="color:var(--text-muted)">主要稳定币</div>
     </div>
   </div>
-</div>
 
-<div class="footer">
-  数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> · 
-  生成时间：2026-04-08 23:32 · 
-  Jarvis 🤖
-</div>
+  <!-- 稳定币表格 -->
+  <table class="data-table">
+    <thead><tr><th>币种</th><th>市值（亿美元）</th><th>占比</th></tr></thead>
+    <tbody id="scTableBody"></tbody>
+  </table>
+
+  <!-- 稳定币新闻 -->
+  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场动态</h3>
+  <ul class="news-list" id="scNewsList"></ul>
+
+  <!-- 稳定币总结 -->
+  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场总结</h3>
+  <div class="summary-box" id="scSummary">稳定币总市值 3227.49 亿美元，7 日+0.14%。USDT 以 1964 亿美元占据主导地位（60.8%），USDC 紧随其后（24.0%）。</div>
+</section>
+
+<footer class="page-footer">
+  <p class="meta">
+    数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> · 
+    生成时间：2026-04-08 23:36 · 
+    Powered by Jarvis 🤖
+  </p>
+</footer>
 
 </div>
 
 <script>
-// RWA 数据
-var RWA_DATA = [{"name": "RWA 总市值（含稳定币）", "value": "4176.74", "chg": 0.0221}, {"name": "RWA 市值（不含稳定币）", "value": "949.24", "chg": 0.0996}, {"name": "私人信贷", "value": "396.48", "chg": 0.2181}, {"name": "公司债券", "value": "272.24", "chg": 0.0046}, {"name": "美国国债", "value": "136.10", "chg": 0.0481}, {"name": "大宗商品", "value": "72.38", "chg": 0.0218}, {"name": "机构基金", "value": "35.06", "chg": 0.1986}, {"name": "政府债券", "value": "18.63", "chg": 0.0005}, {"name": "代币化股票", "value": "18.36", "chg": 0.008}];
-var RWA_NEWS = [{"tag": "高", "tagClass": "tag-high", "title": "贝莱德 BUIDL 基金规模突破 20 亿美元，机构持续加码代币化国债", "url": ""}, {"tag": "中", "tagClass": "tag-mid", "title": "Ondo Finance 宣布与 Mastercard 合作，探索 RWA 支付场景", "url": ""}, {"tag": "低", "tagClass": "tag-low", "title": "Centrifuge 完成新一轮融资，估值达 5 亿美元", "url": ""}];
+var RWA_ASSETS = [{"name": "私人信贷", "cap": "396.48", "chg": 0.2181}, {"name": "公司债券", "cap": "272.24", "chg": 0.0046}, {"name": "美国国债", "cap": "136.10", "chg": 0.0481}, {"name": "大宗商品", "cap": "72.38", "chg": 0.0218}, {"name": "机构基金", "cap": "35.06", "chg": 0.1986}, {"name": "政府债券", "cap": "18.63", "chg": 0.0005}, {"name": "代币化股票", "cap": "18.36", "chg": 0.008}];
+var STABLECOINS = [{"name": "USDT", "cap": "1963.60"}, {"name": "USDC", "cap": "774.70"}, {"name": "USDS", "cap": "28.10"}, {"name": "EURC", "cap": "122.90"}, {"name": "USDe", "cap": "28.10"}, {"name": "USD1", "cap": "13.90"}, {"name": "PYUSD", "cap": "39.90"}];
+var RWA_NEWS = [{"tag": "高", "level": "high", "title": "贝莱德 BUIDL 基金市值突破 20 亿美元，机构 RWA 需求强劲", "source": "CoinDesk", "url": "#"}, {"tag": "中", "level": "mid", "title": "Ondo Finance 与 Coinbase 合作推出代币化美债产品", "source": "The Block", "url": "#"}, {"tag": "低", "level": "low", "title": "MakerDAO 增持美债 RWA 至 12 亿美元", "source": "DeFi Llama", "url": "#"}];
+var SC_NEWS = [{"tag": "高", "level": "high", "title": "FDIC 批准稳定币与代币化存款重大监管框架", "source": "Forbes", "url": "#"}, {"tag": "中", "level": "mid", "title": "Circle 计划 2026 年 IPO，USDC 市值创历史新高", "source": "Bloomberg", "url": "#"}, {"tag": "低", "level": "low", "title": "PYUSD 在 Solana 上流通量突破 10 亿美元", "source": "CoinTelegraph", "url": "#"}];
+var STABLE_TOTAL = 3227.49;
 
-// 稳定币数据
-var SC_DATA = [{"name": "稳定币总市值", "value": "3227.49", "chg": 0.0014}, {"name": "USDT", "value": "1963.60"}, {"name": "USDC", "value": "774.70"}, {"name": "USDS", "value": "28.10"}, {"name": "EURC", "value": "122.90"}, {"name": "USDe", "value": "28.10"}, {"name": "USD1", "value": "13.90"}, {"name": "PYUSD", "value": "39.90"}];
-var SC_NEWS = [{"tag": "高", "tagClass": "tag-high", "title": "FDIC 发布稳定币与代币化存款监管框架草案", "url": ""}, {"tag": "中", "tagClass": "tag-mid", "title": "Circle USDC 市值突破 770 亿美元，创历史新高", "url": ""}, {"tag": "低", "tagClass": "tag-low", "title": "PayPal PYUSD 在 Solana 上的 TVL 持续增长", "url": ""}];
+function pct(v) { return (v>=0?'+':'') + (v*100).toFixed(2)+'%'; }
 
-function renderDataGrid(containerId, data) {
-  var grid = document.getElementById(containerId);
-  grid.innerHTML = data.map(function(d) {
-    var chgClass = d.chg >= 0 ? 'positive' : 'negative';
-    var chgText = (d.chg >= 0 ? '+' : '') + (d.chg * 100).toFixed(2) + '%';
-    return '<div class="data-item">' +
-      '<div class="label">' + d.name + '</div>' +
-      '<div class="value">' + d.value + ' 亿美元</div>' +
-      (d.chg !== undefined ? '<div class="change ' + chgClass + '">' + chgText + '</div>' : '') +
-    '</div>';
+// Render RWA table
+document.getElementById('rwaTableBody').innerHTML = RWA_ASSETS.map(function(a) {
+  var chgClass = a.chg >= 0 ? 'up' : 'down';
+  return '<tr><td>'+a.name+'</td><td>'+a.cap+'</td><td class="change '+chgClass+'" style="color:var(--accent-'+(a.chg>=0?'green':'red')+')">'+pct(a.chg)+'</td></tr>';
+}).join('');
+
+// Render Stablecoin table
+document.getElementById('scTableBody').innerHTML = STABLECOINS.map(function(c) {
+  var share = (parseFloat(c.cap) / STABLE_TOTAL * 100).toFixed(1) + '%';
+  return '<tr><td>'+c.name+'</td><td>'+c.cap+'</td><td style="color:var(--text-secondary)">'+share+'</td></tr>';
+}).join('');
+
+// Render news
+function renderNews(list, containerId) {
+  document.getElementById(containerId).innerHTML = list.map(function(n) {
+    return '<li class="news-item"><span class="news-tag '+n.level+'">'+n.tag+'</span><div class="news-content"><div class="title">'+n.title+'</div><div class="meta">来源：'+n.source+' · <a href="'+n.url+'" target="_blank">查看原文 ↗</a></div></div></li>';
   }).join('');
 }
+renderNews(RWA_NEWS, 'rwaNewsList');
+renderNews(SC_NEWS, 'scNewsList');
 
-function renderNews(containerId, news) {
-  var list = document.getElementById(containerId);
-  if (!news || news.length === 0) {
-    list.innerHTML = '<li class="news-item" style="color:var(--text-muted)">暂无新闻</li>';
-    return;
-  }
-  list.innerHTML = news.map(function(n) {
-    return '<li class="news-item">' +
-      '<span class="news-tag ' + n.tagClass + '">' + n.tag + '</span>' +
-      '<div class="news-content">' + n.title + 
-      (n.url ? ' <a href="' + n.url + '" target="_blank">↗</a>' : '') +
-      '</div></li>';
-  }).join('');
-}
-
-renderDataGrid('rwaDataGrid', RWA_DATA);
-renderDataGrid('scDataGrid', SC_DATA);
-renderNews('rwaNewsList', RWA_NEWS);
-renderNews('scNewsList', SC_NEWS);
-
-function copyBlock(id) {
+// Copy function
+function copyText(id) {
   var text = document.getElementById(id).innerText;
   navigator.clipboard.writeText(text).then(function() {
-    var btn = document.querySelector('[onclick="copyBlock(\'' + id + '\')"]');
-    var orig = btn.innerHTML;
-    btn.innerHTML = '✅ 已复制';
-    setTimeout(function() { btn.innerHTML = orig; }, 1500);
+    var btn = event.target;
+    var orig = btn.textContent;
+    btn.textContent = '✅ 已复制';
+    setTimeout(function() { btn.textContent = orig; }, 1500);
   });
 }
 </script>

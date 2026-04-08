@@ -8,387 +8,460 @@
 :root {
   --bg-primary: #0a0b0f;
   --bg-card: #12141a;
-  --bg-hover: #1a1d25;
-  --border: #1e2128;
-  --text-primary: #f0f0f5;
-  --text-secondary: #8a8f9d;
-  --text-muted: #5a5f6d;
+  --bg-elevated: #1a1d24;
+  --border: #252830;
+  --text-primary: #f0f2f5;
+  --text-secondary: #8b919e;
+  --text-muted: #5a5f6a;
   --accent-blue: #4a9eff;
-  --accent-green: #22c55e;
-  --accent-red: #ef4444;
-  --accent-orange: #f59e0b;
+  --accent-green: #34d399;
+  --accent-red: #f87171;
+  --accent-orange: #fb923c;
+  --accent-purple: #a78bfa;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
 }
-.container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+.container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
 
 /* Header */
-.header {
+.page-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--border);
 }
-.header h1 {
+.page-header h1 {
   font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 8px;
+  letter-spacing: -0.5px;
 }
-.header .subtitle {
+.page-header .subtitle {
   font-size: 14px;
   color: var(--text-muted);
 }
 
+/* Date Navigation */
+.date-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.date-tab {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.date-tab:hover { border-color: var(--accent-blue); color: var(--text-primary); }
+.date-tab.active {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #fff;
+  font-weight: 600;
+}
+
 /* Section */
 .section {
-  margin-bottom: 56px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 24px;
 }
 .section-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
   margin-bottom: 24px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--border);
 }
-.section-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-.section-icon.rwa { background: linear-gradient(135deg, #1e3a5f, #0d1f33); }
-.section-icon.stable { background: linear-gradient(135deg, #1e5f3a, #0d331f); }
 .section-title {
   font-size: 18px;
   font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title .icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.section-title .icon.rwa { background: linear-gradient(135deg, #4a9eff20, #a78bfa20); }
+.section-title .icon.stable { background: linear-gradient(135deg, #34d39920, #4a9eff20); }
+.section-badge {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
 }
 
-/* Date Entry */
-.date-entry {
-  background: var(--bg-card);
+/* Copy Block */
+.copy-container {
+  background: var(--bg-primary);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  margin-bottom: 20px;
+  border-radius: 12px;
   overflow: hidden;
+  margin-bottom: 24px;
 }
-.date-header {
+.copy-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
-  background: var(--bg-hover);
+  padding: 12px 16px;
+  background: var(--bg-elevated);
   border-bottom: 1px solid var(--border);
 }
-.date-badge {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-.date-badge span {
-  color: var(--text-muted);
-  font-weight: 400;
-  font-size: 13px;
-  margin-left: 8px;
-}
-.copy-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 14px;
+.copy-label {
   font-size: 12px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: inherit;
-}
-.copy-btn:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-  border-color: var(--accent-blue);
-}
-
-/* Data Grid */
-.data-section {
-  padding: 20px;
-}
-.data-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.data-item {
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
-}
-.data-item .label {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-.data-item .value {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  font-variant-numeric: tabular-nums;
-}
-.data-item .change {
-  font-size: 12px;
-  margin-top: 2px;
-}
-.positive { color: var(--accent-green); }
-.negative { color: var(--accent-red); }
-
-/* Copy Block */
-.copy-block-wrapper {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-}
-.copy-block-label {
-  font-size: 11px;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
+  letter-spacing: 0.5px;
 }
-.copy-block {
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 18px;
-  font-size: 13px;
-  color: var(--text-secondary);
+.btn-copy {
+  background: var(--accent-blue);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.btn-copy:hover { opacity: 0.85; }
+.copy-content {
+  padding: 20px;
+  font-family: "SF Mono", "Menlo", "PingFang SC", monospace;
+  font-size: 14px;
   line-height: 2;
-  font-family: "SF Mono", "Monaco", "PingFang SC", monospace;
+  color: var(--text-primary);
   white-space: pre-wrap;
   user-select: all;
 }
 
-/* News */
-.news-section {
-  padding: 0 20px 20px;
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
 }
-.news-title {
-  font-size: 13px;
+.stat-card {
+  background: var(--bg-elevated);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.stat-card .label {
+  font-size: 12px;
   color: var(--text-muted);
-  margin-bottom: 12px;
-  padding-bottom: 8px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.stat-card .value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.stat-card .change {
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+.stat-card .change.up { color: var(--accent-green); }
+.stat-card .change.down { color: var(--accent-red); }
+
+/* Data Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+.data-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   border-bottom: 1px solid var(--border);
+  font-weight: 500;
 }
-.news-list {
-  list-style: none;
+.data-table th:nth-child(2),
+.data-table th:nth-child(3) { text-align: right; }
+.data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
 }
+.data-table td:nth-child(1) { color: var(--text-primary); font-weight: 500; }
+.data-table td:nth-child(2) {
+  text-align: right;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.data-table td:nth-child(3) { text-align: right; font-size: 13px; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--bg-elevated); }
+
+/* News */
+.news-list { list-style: none; }
 .news-item {
   display: flex;
-  gap: 10px;
-  padding: 10px 0;
+  gap: 14px;
+  padding: 16px 0;
   border-bottom: 1px solid var(--border);
 }
 .news-item:last-child { border-bottom: none; }
 .news-tag {
   flex-shrink: 0;
   font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 4px;
   font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  height: fit-content;
 }
-.tag-high { background: rgba(239,68,68,0.15); color: var(--accent-red); }
-.tag-mid { background: rgba(245,158,11,0.15); color: var(--accent-orange); }
-.tag-low { background: rgba(74,158,255,0.15); color: var(--accent-blue); }
-.news-content {
-  flex: 1;
-  font-size: 13px;
-  color: var(--text-secondary);
+.news-tag.high { background: #f8717120; color: var(--accent-red); }
+.news-tag.mid { background: #fb923c20; color: var(--accent-orange); }
+.news-tag.low { background: #4a9eff20; color: var(--accent-blue); }
+.news-content .title {
+  font-size: 14px;
+  color: var(--text-primary);
   line-height: 1.5;
+  margin-bottom: 6px;
 }
-.news-content a {
-  color: var(--accent-blue);
-  text-decoration: none;
+.news-content .meta {
+  font-size: 12px;
+  color: var(--text-muted);
 }
+.news-content a { color: var(--accent-blue); text-decoration: none; }
 .news-content a:hover { text-decoration: underline; }
 
 /* Summary */
-.summary-section {
-  padding: 0 20px 20px;
-}
 .summary-box {
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
+  background: var(--bg-elevated);
   border-left: 3px solid var(--accent-blue);
-  border-radius: 10px;
-  padding: 14px 18px;
-  font-size: 13px;
+  border-radius: 8px;
+  padding: 20px 24px;
+  font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.8;
 }
 
 /* Footer */
-.footer {
+.page-footer {
   text-align: center;
   padding-top: 32px;
   border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+.page-footer .meta {
   font-size: 12px;
   color: var(--text-muted);
 }
-.footer a { color: var(--text-secondary); text-decoration: none; }
-.footer a:hover { color: var(--accent-blue); }
+.page-footer a { color: var(--text-secondary); }
 
-@media (max-width: 600px) {
-  .container { padding: 24px 16px; }
-  .data-grid { grid-template-columns: repeat(2, 1fr); }
-  .date-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+@media (max-width: 640px) {
+  .container { padding: 20px 16px; }
+  .section { padding: 20px; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .date-nav { gap: 8px; }
+  .date-tab { padding: 8px 14px; font-size: 13px; }
 }
 </style>
 </head>
 <body>
 <div class="container">
 
-<div class="header">
+<header class="page-header">
   <h1>RWA 每日简报</h1>
-  <p class="subtitle">Real World Assets Daily Report · Powered by Jarvis</p>
-</div>
+  <p class="subtitle">代币化资产市场数据 · 由 Jarvis 自动生成</p>
+</header>
+
+<!-- Date Navigation -->
+<nav class="date-nav">
+  <button class="date-tab active" data-date="{{today_cn}}">{{today_cn}}</button>
+</nav>
 
 <!-- ==================== RWA 品类板块 ==================== -->
-<div class="section">
+<section class="section" id="rwa-section">
   <div class="section-header">
-    <div class="section-icon rwa">📊</div>
-    <h2 class="section-title">RWA 品类数据</h2>
+    <h2 class="section-title">
+      <span class="icon rwa">📊</span>
+      RWA 品类数据
+    </h2>
+    <span class="section-badge">{{today_cn}} 更新</span>
   </div>
-  
-  <div class="date-entry" id="rwaEntry">
-    <div class="date-header">
-      <div class="date-badge">{{today_cn}}<span>UTC+8</span></div>
-      <button class="copy-btn" onclick="copyBlock('rwaCopy')">📋 复制数据</button>
+
+  <!-- 复制模板 -->
+  <div class="copy-container">
+    <div class="copy-header">
+      <span class="copy-label">复制模板</span>
+      <button class="btn-copy" onclick="copyText('rwaCopy')">📋 复制</button>
     </div>
-    
-    <div class="data-section">
-      <div class="data-grid" id="rwaDataGrid">
-        <!-- 动态注入 -->
-      </div>
-      
-      <div class="copy-block-wrapper">
-        <div class="copy-block-label">一键复制模板</div>
-        <div class="copy-block" id="rwaCopy">{{rwa_copy_text}}</div>
-      </div>
+    <div class="copy-content" id="rwaCopy">{{rwa_copy_text}}</div>
+  </div>
+
+  <!-- 统计卡片 -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">RWA 总市值</div>
+      <div class="value">{{rwa_total}}</div>
+      <div class="change {{rwa_total_chg_class}}">{{rwa_total_chg}}</div>
     </div>
-    
-    <div class="news-section">
-      <div class="news-title">📰 RWA 市场动态（24h）</div>
-      <ul class="news-list" id="rwaNewsList"></ul>
+    <div class="stat-card">
+      <div class="label">非稳定币市值</div>
+      <div class="value">{{non_stable_cap}}</div>
+      <div class="change {{non_stable_chg_class}}">{{non_stable_chg}}</div>
     </div>
-    
-    <div class="summary-section">
-      <div class="summary-box" id="rwaSummary">{{rwa_summary}}</div>
+    <div class="stat-card">
+      <div class="label">持有人数</div>
+      <div class="value">{{holders}}亿</div>
+      <div class="change {{holders_chg_class}}">{{holders_chg}}</div>
     </div>
   </div>
-</div>
+
+  <!-- 品类表格 -->
+  <table class="data-table">
+    <thead><tr><th>品类</th><th>市值（亿美元）</th><th>7日变化</th></tr></thead>
+    <tbody id="rwaTableBody"></tbody>
+  </table>
+
+  <!-- RWA 新闻 -->
+  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场动态</h3>
+  <ul class="news-list" id="rwaNewsList"></ul>
+
+  <!-- RWA 总结 -->
+  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场总结</h3>
+  <div class="summary-box" id="rwaSummary">{{rwa_summary}}</div>
+</section>
 
 <!-- ==================== 稳定币板块 ==================== -->
-<div class="section">
+<section class="section" id="stablecoin-section">
   <div class="section-header">
-    <div class="section-icon stable">💵</div>
-    <h2 class="section-title">稳定币市值数据</h2>
+    <h2 class="section-title">
+      <span class="icon stable">💵</span>
+      稳定币数据
+    </h2>
+    <span class="section-badge">{{today_cn}} 更新</span>
   </div>
-  
-  <div class="date-entry" id="stableEntry">
-    <div class="date-header">
-      <div class="date-badge">{{today_cn}}<span>UTC+8</span></div>
-      <button class="copy-btn" onclick="copyBlock('scCopy')">📋 复制数据</button>
-    </div>
-    
-    <div class="data-section">
-      <div class="data-grid" id="scDataGrid">
-        <!-- 动态注入 -->
-      </div>
-      
-      <div class="copy-block-wrapper">
-        <div class="copy-block-label">一键复制模板</div>
-        <div class="copy-block" id="scCopy">{{sc_copy_text}}</div>
-      </div>
-    </div>
-    
-    <div class="news-section">
-      <div class="news-title">📰 稳定币市场动态（24h）</div>
-      <ul class="news-list" id="scNewsList"></ul>
-    </div>
-    
-    <div class="summary-section">
-      <div class="summary-box" id="scSummary">{{sc_summary}}</div>
-    </div>
-  </div>
-</div>
 
-<div class="footer">
-  数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> · 
-  生成时间：{{gen_time}} · 
-  Jarvis 🤖
-</div>
+  <!-- 复制模板 -->
+  <div class="copy-container">
+    <div class="copy-header">
+      <span class="copy-label">复制模板</span>
+      <button class="btn-copy" onclick="copyText('scCopy')">📋 复制</button>
+    </div>
+    <div class="copy-content" id="scCopy">{{sc_copy_text}}</div>
+  </div>
+
+  <!-- 统计卡片 -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">稳定币总市值</div>
+      <div class="value">{{stable_cap}}</div>
+      <div class="change {{stable_chg_class}}">{{stable_chg}}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">USDT 占比</div>
+      <div class="value">{{usdt_share}}%</div>
+      <div class="change" style="color:var(--text-muted)">主导地位</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">币种数量</div>
+      <div class="value">7</div>
+      <div class="change" style="color:var(--text-muted)">主要稳定币</div>
+    </div>
+  </div>
+
+  <!-- 稳定币表格 -->
+  <table class="data-table">
+    <thead><tr><th>币种</th><th>市值（亿美元）</th><th>占比</th></tr></thead>
+    <tbody id="scTableBody"></tbody>
+  </table>
+
+  <!-- 稳定币新闻 -->
+  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场动态</h3>
+  <ul class="news-list" id="scNewsList"></ul>
+
+  <!-- 稳定币总结 -->
+  <h3 style="font-size:14px;color:var(--text-muted);margin:24px 0 16px;text-transform:uppercase;letter-spacing:0.5px;">市场总结</h3>
+  <div class="summary-box" id="scSummary">{{sc_summary}}</div>
+</section>
+
+<footer class="page-footer">
+  <p class="meta">
+    数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> · 
+    生成时间：{{gen_time}} · 
+    Powered by Jarvis 🤖
+  </p>
+</footer>
 
 </div>
 
 <script>
-// RWA 数据
-var RWA_DATA = {{rwa_data_js}};
+var RWA_ASSETS = {{rwa_assets_js}};
+var STABLECOINS = {{stablecoins_js}};
 var RWA_NEWS = {{rwa_news_js}};
-
-// 稳定币数据
-var SC_DATA = {{sc_data_js}};
 var SC_NEWS = {{sc_news_js}};
+var STABLE_TOTAL = {{stable_total_raw}};
 
-function renderDataGrid(containerId, data) {
-  var grid = document.getElementById(containerId);
-  grid.innerHTML = data.map(function(d) {
-    var chgClass = d.chg >= 0 ? 'positive' : 'negative';
-    var chgText = (d.chg >= 0 ? '+' : '') + (d.chg * 100).toFixed(2) + '%';
-    return '<div class="data-item">' +
-      '<div class="label">' + d.name + '</div>' +
-      '<div class="value">' + d.value + ' 亿美元</div>' +
-      (d.chg !== undefined ? '<div class="change ' + chgClass + '">' + chgText + '</div>' : '') +
-    '</div>';
+function pct(v) { return (v>=0?'+':'') + (v*100).toFixed(2)+'%'; }
+
+// Render RWA table
+document.getElementById('rwaTableBody').innerHTML = RWA_ASSETS.map(function(a) {
+  var chgClass = a.chg >= 0 ? 'up' : 'down';
+  return '<tr><td>'+a.name+'</td><td>'+a.cap+'</td><td class="change '+chgClass+'" style="color:var(--accent-'+(a.chg>=0?'green':'red')+')">'+pct(a.chg)+'</td></tr>';
+}).join('');
+
+// Render Stablecoin table
+document.getElementById('scTableBody').innerHTML = STABLECOINS.map(function(c) {
+  var share = (parseFloat(c.cap) / STABLE_TOTAL * 100).toFixed(1) + '%';
+  return '<tr><td>'+c.name+'</td><td>'+c.cap+'</td><td style="color:var(--text-secondary)">'+share+'</td></tr>';
+}).join('');
+
+// Render news
+function renderNews(list, containerId) {
+  document.getElementById(containerId).innerHTML = list.map(function(n) {
+    return '<li class="news-item"><span class="news-tag '+n.level+'">'+n.tag+'</span><div class="news-content"><div class="title">'+n.title+'</div><div class="meta">来源：'+n.source+' · <a href="'+n.url+'" target="_blank">查看原文 ↗</a></div></div></li>';
   }).join('');
 }
+renderNews(RWA_NEWS, 'rwaNewsList');
+renderNews(SC_NEWS, 'scNewsList');
 
-function renderNews(containerId, news) {
-  var list = document.getElementById(containerId);
-  if (!news || news.length === 0) {
-    list.innerHTML = '<li class="news-item" style="color:var(--text-muted)">暂无新闻</li>';
-    return;
-  }
-  list.innerHTML = news.map(function(n) {
-    return '<li class="news-item">' +
-      '<span class="news-tag ' + n.tagClass + '">' + n.tag + '</span>' +
-      '<div class="news-content">' + n.title + 
-      (n.url ? ' <a href="' + n.url + '" target="_blank">↗</a>' : '') +
-      '</div></li>';
-  }).join('');
-}
-
-renderDataGrid('rwaDataGrid', RWA_DATA);
-renderDataGrid('scDataGrid', SC_DATA);
-renderNews('rwaNewsList', RWA_NEWS);
-renderNews('scNewsList', SC_NEWS);
-
-function copyBlock(id) {
+// Copy function
+function copyText(id) {
   var text = document.getElementById(id).innerText;
   navigator.clipboard.writeText(text).then(function() {
-    var btn = document.querySelector('[onclick="copyBlock(\'' + id + '\')"]');
-    var orig = btn.innerHTML;
-    btn.innerHTML = '✅ 已复制';
-    setTimeout(function() { btn.innerHTML = orig; }, 1500);
+    var btn = event.target;
+    var orig = btn.textContent;
+    btn.textContent = '✅ 已复制';
+    setTimeout(function() { btn.textContent = orig; }, 1500);
   });
 }
 </script>
