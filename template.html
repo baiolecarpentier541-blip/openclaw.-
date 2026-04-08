@@ -19,6 +19,15 @@
   --accent-orange: #fb923c;
   --accent-purple: #a78bfa;
 }
+[data-theme="light"] {
+  --bg-primary: #f5f6fa;
+  --bg-card: #ffffff;
+  --bg-elevated: #eef0f5;
+  --border: #dde0e8;
+  --text-primary: #1a1d24;
+  --text-secondary: #5a6070;
+  --text-muted: #9095a5;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html {
   scroll-behavior: smooth;
@@ -34,33 +43,66 @@ body {
 
 /* Header */
 .page-header {
-  text-align: center;
-  margin-bottom: 40px;
-  padding-bottom: 32px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
   border-bottom: 1px solid var(--border);
 }
-.page-header h1 {
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.header-left h1 {
   font-size: 28px;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   letter-spacing: -0.5px;
 }
-.page-header .subtitle {
+.header-left .subtitle {
   font-size: 14px;
   color: var(--text-muted);
+}
+.theme-toggle {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.theme-toggle:hover {
+  background: var(--bg-elevated);
+  border-color: var(--accent-blue);
+}
+
+/* Date + Nav Row */
+.date-nav-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 /* Date Badge */
 .date-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 10px 20px;
+  font-size: 15px;
   color: var(--text-primary);
-  margin-bottom: 20px;
   font-weight: 500;
 }
 
@@ -68,28 +110,23 @@ body {
 .quick-nav {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 6px;
-  margin-bottom: 32px;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: 10px;
+  padding: 4px;
 }
 .quick-nav-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
+  gap: 6px;
+  padding: 8px 18px;
   border: none;
   background: transparent;
   color: var(--text-secondary);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: 7px;
   cursor: pointer;
   transition: all 0.2s;
   font-family: inherit;
@@ -101,14 +138,8 @@ body {
 .quick-nav-btn:active {
   transform: scale(0.97);
 }
-.nav-icon {
-  font-size: 16px;
-}
-.nav-divider {
-  width: 1px;
-  height: 24px;
-  background: var(--border);
-}
+.nav-icon { font-size: 14px; }
+.nav-divider { width: 1px; height: 20px; background: var(--border); }
 
 /* Section */
 .section {
@@ -404,31 +435,38 @@ body {
 <div class="container">
 
 <header class="page-header">
-  <h1>每日数据简报</h1>
-  <p class="subtitle">代币化资产市场数据 · 由 Jarvis 自动生成</p>
+  <div class="header-top">
+    <div class="header-left">
+      <h1>每日数据简报</h1>
+      <p class="subtitle">代币化资产市场数据 · 由 Jarvis 自动生成</p>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" title="切换主题">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </div>
 </header>
 
-<div class="date-badge">📅 {{today_cn}}（UTC+8）</div>
-
-<!-- 快速定位导航 -->
-<nav class="quick-nav">
-  <button class="quick-nav-btn" onclick="jumpToSection('rwa-section')">
-    <span class="nav-icon">📊</span>
-    <span>RWA 品类</span>
-  </button>
-  <div class="nav-divider"></div>
-  <button class="quick-nav-btn" onclick="jumpToSection('stablecoin-section')">
-    <span class="nav-icon">💵</span>
-    <span>稳定币</span>
-  </button>
-</nav>
+<div class="date-nav-row">
+  <div class="date-badge">📅 {{today_cn}}（UTC+8）</div>
+  <nav class="quick-nav">
+    <button class="quick-nav-btn" onclick="jumpToSection('rwa-section')">
+      <span class="nav-icon">📊</span>
+      <span>RWA</span>
+    </button>
+    <div class="nav-divider"></div>
+    <button class="quick-nav-btn" onclick="jumpToSection('stablecoin-section')">
+      <span class="nav-icon">💵</span>
+      <span>稳定币</span>
+    </button>
+  </nav>
+</div>
 
 <!-- ==================== RWA 品类板块 ==================== -->
 <section class="section" id="rwa-section">
   <div class="section-header">
     <h2 class="section-title">
       <span class="icon rwa">📊</span>
-      RWA 品类数据
+      RWA 数据
     </h2>
     <span class="section-badge">{{today_cn}} 更新</span>
   </div>
@@ -612,6 +650,30 @@ function jumpToSection(id) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
+
+function toggleTheme() {
+  var html = document.documentElement;
+  var icon = document.getElementById('themeIcon');
+  var current = html.getAttribute('data-theme');
+  if (current === 'light') {
+    html.removeAttribute('data-theme');
+    icon.textContent = '🌙';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.setAttribute('data-theme', 'light');
+    icon.textContent = '☀️';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+// Restore saved theme on load
+(function() {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.getElementById('themeIcon').textContent = '☀️';
+  }
+})();
 
 // Render RWA table
 document.getElementById('rwaTableBody').innerHTML = RWA_ASSETS.map(function(a) {
