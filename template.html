@@ -491,47 +491,6 @@ body {
     </div>
     <div class="copy-content" id="btcCopy">{{btc_copy_text}}</div>
   </div>
-
-  <!-- 统计卡片 -->
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="label">上市公司总数</div>
-      <div class="stat-value-row">
-        <span class="value">{{btc_holder_count}}</span>
-        <button class="btn-copy-sm" onclick="copyValue('{{btc_holder_count}} 家')">复制</button>
-      </div>
-      <div class="change" style="color:var(--text-muted)">持有 BTC 的机构</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">合计持有 BTC</div>
-      <div class="stat-value-row">
-        <span class="value">{{btc_holding_count}}</span>
-      </div>
-      <div class="change" style="color:var(--text-muted)">枚</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">总储备价值</div>
-      <div class="stat-value-row">
-        <span class="value">{{btc_total_value}}</span>
-        <button class="btn-copy-sm" onclick="copyValue('{{btc_total_value}} 亿美元')">复制</button>
-      </div>
-      <div class="change" style="color:var(--text-muted)">亿美元</div>
-    </div>
-  </div>
-
-  <!-- BTC 新闻 -->
-  <h3 class="subsection-title">市场动态（24h）</h3>
-  <ul class="news-list" id="btcNewsList"></ul>
-
-  <!-- BTC 总结 -->
-  <h3 class="subsection-title">市场总结</h3>
-  <div class="summary-container">
-    <div class="summary-header">
-      <span class="copy-label">BTC 市场总结</span>
-      <button class="btn-copy" onclick="copyText('btcSummary')">📋 复制全文</button>
-    </div>
-    <div class="summary-content structured-summary" id="btcSummary">{{btc_summary}}</div>
-  </div>
 </section>
 
 <!-- ==================== RWA 品类板块 ==================== -->
